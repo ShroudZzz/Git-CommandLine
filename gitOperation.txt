@@ -76,4 +76,24 @@ git branch -d <分支名称>
 
 此时查看branch，就只剩下master分支了 (git branch)
 **************************************************************************************
+合并分支
+git log --graph命令可以看到分支合并图。
+
+git merge feature1
+Auto-merging readme.txt
+CONFLICT (content): Merge conflict in <冲突文件名>
+Automatic merge failed; fix conflicts and then commit the result.
+
+git status也可以告诉我们冲突的文件
+
+冲突内容标注
+<<<<<<< HEAD<主分支>
+Creating a new branch is quick & simple.
+=======
+Creating a new branch is quick AND simple.
+>>>>>>> dev<其他分支>
+
+修改后提交
+
+**************************************************************************************
 
