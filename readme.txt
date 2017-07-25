@@ -2,5 +2,5 @@ git is very good
 git is a free softwaregit
 git test back — .-
 git test stage
-git 管理修改 
+git 管理修改 么么哒
 git tracks changes
