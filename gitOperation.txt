@@ -77,7 +77,7 @@ git branch -d <分支名称>
 此时查看branch，就只剩下master分支了 (git branch)
 **************************************************************************************
 合并分支
-git log --graph命令可以看到分支合并图。
+git log --graph命令可以看到分支合并图。(git log --graph --pretty=oneline --abbrev-commit)
 
 git merge feature1
 Auto-merging readme.txt
@@ -96,4 +96,39 @@ Creating a new branch is quick AND simple.
 修改后提交
 
 **************************************************************************************
+
+分支策略
+git merge --no-ff -m "merge with no-ff" <分支名称>
+git merge --no-ff -m "merge with no-ff" dev
+查看分支历史
+git log --graph --pretty=oneline --abbrev-commit
+**************************************************************************************
+Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
+用git status查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。
+
+解决流程
+1.首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支：
+git checkout master 切换到主分支
+git checkout -b issue-101
+2.现在修复bug 然后提交
+git add readme.txt
+git commit -m "fix bug 101"
+3.修复完成后，切换到master分支，并完成合并，最后删除issue-101分支：
+git checkout master
+$ git merge --no-ff -m "merged bug fix 101" issue-101
+git branch -d issue-101
+4.接着回到原来你的分支干活了
+git checkout dev
+git status 工作区干净的Zzz
+5.Git把stash内容存在某个地方了，但是需要恢复
+git stash list 存储列表
+git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+git stash pop，恢复的同时把stash内容也删了
+注意:
+多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令：
+
+$ git stash apply stash@{0}
+
+**************************************************************************************
+$ git branch -D <分支名称> 强行删除
 
