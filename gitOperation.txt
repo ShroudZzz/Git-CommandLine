@@ -1,0 +1,22 @@
+git 检测有没有安装git
+git sudo apt-get install git git安装
+git init  切换到目标目录 会建立空的仓库
+git ls -ah 查看所有文件(隐藏)
+git add 提交代码 将工作区的修改存放至暂存区
+git commit -m”描述” (多次add  一次commit)
+git status命令可以让我们时刻掌握仓库当前的状态
+git diff <File> 查看具体修改的内容 (没有add前)
+git log 查看版本历史记录 git log --pretty=oneline
+git reset —-head HEAD^ 
+在Git中，用HEAD表示当前版本，也就是最新的提交3628164...882e1e0（注意我的提交ID        和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+git git reset —-hard <版本ID 号> 可以恢复指定当前版本
+git reflog git命令记录 可用于追溯 恢复新版本
+注意 Zzz
+git add把文件添加进去，实际上就是把文件修改添加到暂存区 git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
+cat <File>  查看文件
+注意  Zzz
+第一次修改 -> git add -> 第二次修改 -> git commit
+你看，我们前面讲了，Git管理的是修改，当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。提交后，用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别：
+git checkout -- <File> 丢弃工作区的修改 工作区的修改全部撤销 让这个文件回到最近一次git commit或git add时的状态。
+git reset HEAD <File> 命令既可以回退版本，也可以把暂存区的修改回退到工作区 之后丢弃修改就是上面的命令
+
