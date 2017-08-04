@@ -1,4 +1,4 @@
-git 检测有没有安装git
+ — git 检测有没有安装git
 git sudo apt-get install git git安装
 git init  切换到目标目录 会建立空的仓库
 git ls -ah 查看所有文件(隐藏)
